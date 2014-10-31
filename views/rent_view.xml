@@ -18,21 +18,21 @@
             <field name="model">rentroom.house</field>
             <field name="arch" type="xml">
                 <form>
-                    <group col="3">
-                        <group colspan="1" string="房屋信息">
-                            <field name="name"/>
-                            <separator/><newline/>
-                            <field name="address"/>
-                            <separator/><newline/>
-                            <field name="price"/>
+                    <header>
+                        <button type="object" name="add_rent_record" confirm="确认续租一个月吗？" string="续租" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group col="1">
+                            <group string="房屋信息">
+                                <field name="name"/>
+                                <field name="address"/>
+                                <field name="price"/>
+                            </group>
+                            <group string="出租记录">
+                                <field name="record_ids" nolabel="1"/>
+                            </group>
                         </group>
-                        <group colspan="2" string="出租记录">
-                            <field name="record_ids" nolabel="1"/><newline/>
-                            <separator/><newline/>
-                            <button type="object" name="add_rent_record" confirm="确认续租一个月吗？" string="续租"/>
-                        </group>
-                    </group>
-
+                    </sheet>
                 </form>
             </field>
         </record>
@@ -42,14 +42,13 @@
             <field name="model">rentroom.record</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="start_date"/>
-                    <field name="end_date"/>
                     <field name="partner_id"/>
                     <field name="house_id"/>
                     <field name="house_price"/>
                     <field name="fee_ids"/>
                     <field name="total"/>
-
+                    <field name="start_date"/>
+                    <field name="end_date"/>
                 </tree>
             </field>
         </record>
@@ -59,27 +58,21 @@
             <field name="model">rentroom.record</field>
             <field name="arch" type="xml">
                 <form nolabel="1">
-                    <group>
-                        <group>
-                            <field name="house_id"/>
-                            <field name="start_date"/>
-                            <field name="end_date"/>
-                            <field name="partner_id"/>
-                        </group>
-                        <group col="3">
-                            <group colspan="3">
-                                <field name="house_price"/>
+                    <sheet>
+                        <group col="1">
+                            <group>
+                                <field name="house_id"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="partner_id"/>
                             </group>
-                            <group colspan="2">
-                                <field name="fee_ids" mode="tree" colspan="3" /><newline/>
-                            </group>
-                            <separator/><newline/>
-                            <group colspan="3" col="2">
-                                <field name="total" />
+                            <group>
+                                <field name="house_price" readonly="1"/>
+                                <field name="fee_ids"/>
+                                <field name="total"/>
                             </group>
                         </group>
-
-                    </group>
+                    </sheet>
                 </form>
             </field>
         </record>

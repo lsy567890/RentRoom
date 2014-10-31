@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 class house(models.Model):
     _name = 'rentroom.house'
 
-    name = fields.Char('房屋', required=True)
+    name = fields.Char('房屋名称', required=True)
     address = fields.Char('地址')
     price = fields.Float('租金', required=True)
     record_ids = fields.One2many('rentroom.record', 'house_id', string='记录', invisible=False)
@@ -32,7 +32,7 @@ class house(models.Model):
 
 class record(models.Model):
     _name = 'rentroom.record'
-    _order = 'end_date'
+    _order = 'end_date desc'
     _rec_name = 'house_id'
 
     start_date = fields.Date('开始日期', required=True)
