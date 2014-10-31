@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        <record id="action_house" model="ir.actions.act_window">
+            <field name="name">房屋</field>
+            <field name="res_model">rentroom.house</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="action_record" model="ir.actions.act_window">
+            <field name="name">出租记录</field>
+            <field name="res_model">rentroom.record</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_root"  name="房屋出租" sequence="50"/>
+        <menuitem id="menu_config_partner_type" name="房屋出租" parent="menu_root" sequence="5"/>
+        <menuitem action="action_house" id="menu_house" parent="menu_config_partner_type"
+                  sequence="2"/>
+        <menuitem action="action_record" id="menu_record" parent="menu_config_partner_type"
+                  sequence="12"/>
+
+
+    </data>
+</openerp>

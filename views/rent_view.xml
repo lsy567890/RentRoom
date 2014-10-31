@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        <record id="view_rent_house_tree" model="ir.ui.view">
+            <field name="name">HOUSE</field>
+            <field name="model">rentroom.house</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_rent_house_form" model="ir.ui.view">
+            <field name="name">HOUSE</field>
+            <field name="model">rentroom.house</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="3">
+                        <group colspan="1" string="房屋信息">
+                            <field name="name"/>
+                            <separator/><newline/>
+                            <field name="address"/>
+                            <separator/><newline/>
+                            <field name="price"/>
+                        </group>
+                        <group colspan="2" string="出租记录">
+                            <field name="record_ids" nolabel="1"/><newline/>
+                            <separator/><newline/>
+                            <button type="object" name="add_rent_record" confirm="确认续租一个月吗？" string="续租"/>
+                        </group>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="view_rent_record_tree" model="ir.ui.view">
+            <field name="name">RECORD</field>
+            <field name="model">rentroom.record</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="partner_id"/>
+                    <field name="house_id"/>
+                    <field name="house_price"/>
+                    <field name="fee_ids"/>
+                    <field name="total"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_rent_record_form" model="ir.ui.view">
+            <field name="name">RECORD</field>
+            <field name="model">rentroom.record</field>
+            <field name="arch" type="xml">
+                <form nolabel="1">
+                    <group>
+                        <group>
+                            <field name="house_id"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="partner_id"/>
+                        </group>
+                        <group col="3">
+                            <group colspan="3">
+                                <field name="house_price"/>
+                            </group>
+                            <group colspan="2">
+                                <field name="fee_ids" mode="tree" colspan="3" /><newline/>
+                            </group>
+                            <separator/><newline/>
+                            <group colspan="3" col="2">
+                                <field name="total" />
+                            </group>
+                        </group>
+
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_rent_fee_tree" model="ir.ui.view">
+            <field name="name">FEE</field>
+            <field name="model">rentroom.fee</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name" string="费用名称"/>
+                    <field name="price"/>
+                    <field name="record_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
