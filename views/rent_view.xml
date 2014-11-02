@@ -13,6 +13,19 @@
             </field>
         </record>
 
+        <record id="view_rent_house_search" model="ir.ui.view">
+            <field name="name">HOUSE</field>
+            <field name="model">rentroom.house</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="price" string="租金小于等于" operator="&lt;="/>
+                    <field name="price" string="租金大于等于" operator="&gt;="/>
+                </search>
+            </field>
+        </record>
+
         <record id="view_rent_house_form" model="ir.ui.view">
             <field name="name">HOUSE</field>
             <field name="model">rentroom.house</field>
@@ -41,7 +54,7 @@
             <field name="name">RECORD</field>
             <field name="model">rentroom.record</field>
             <field name="arch" type="xml">
-                <tree>
+                <search>
                     <field name="partner_id"/>
                     <field name="house_id"/>
                     <field name="house_price"/>
@@ -49,7 +62,31 @@
                     <field name="total"/>
                     <field name="start_date"/>
                     <field name="end_date"/>
-                </tree>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_rent_record_search" model="ir.ui.view">
+            <field name="name">RECORD</field>
+            <field name="model">rentroom.record</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="partner_id"/>
+                    <field name="house_id"/>
+
+                    <field name="total"  string="总金额小于等于" operator="&lt;="/>
+                    <field name="total"  string="总金额大于等于" operator="&gt;="/>
+
+                    <field name="start_date"  string="开始日期早于" operator="&lt;="/>
+                    <field name="start_date"  string="开始日期晚于" operator="&gt;="/>
+
+                    <field name="end_date" string="结束日期早于" operator="&lt;="/>
+                    <field name="end_date" string="结束日期晚于" operator="&gt;="/>
+
+                    <group>
+                        <filter string="test_search" />
+                    </group>
+                </search>
             </field>
         </record>
 
