@@ -54,7 +54,7 @@
             <field name="name">RECORD</field>
             <field name="model">rentroom.record</field>
             <field name="arch" type="xml">
-                <search>
+                <tree>
                     <field name="partner_id"/>
                     <field name="house_id"/>
                     <field name="house_price"/>
@@ -62,7 +62,7 @@
                     <field name="total"/>
                     <field name="start_date"/>
                     <field name="end_date"/>
-                </search>
+                </tree>
             </field>
         </record>
 
@@ -73,6 +73,11 @@
                 <search>
                     <field name="partner_id"/>
                     <field name="house_id"/>
+                    <field name="house_price"/>
+                    <field name="fee_ids"/>
+                    <field name="total"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
 
                     <field name="total"  string="总金额小于等于" operator="&lt;="/>
                     <field name="total"  string="总金额大于等于" operator="&gt;="/>
@@ -83,8 +88,9 @@
                     <field name="end_date" string="结束日期早于" operator="&lt;="/>
                     <field name="end_date" string="结束日期晚于" operator="&gt;="/>
 
-                    <group>
-                        <filter string="test_search" />
+                    <group string="分组">
+                        <filter string="房屋" domain="[]" context="{'group_by':'house_id'}"/>
+                        <filter string="交租日期" domain="[]" context="{'group_by': 'start_date:month'}"/>
                     </group>
                 </search>
             </field>
@@ -125,7 +131,5 @@
                 </tree>
             </field>
         </record>
-
-
     </data>
 </openerp>
