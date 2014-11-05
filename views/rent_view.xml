@@ -75,9 +75,6 @@
                     <field name="house_id"/>
                     <field name="house_price"/>
                     <field name="fee_ids"/>
-                    <field name="total"/>
-                    <field name="start_date"/>
-                    <field name="end_date"/>
 
                     <field name="total"  string="总金额小于等于" operator="&lt;="/>
                     <field name="total"  string="总金额大于等于" operator="&gt;="/>
